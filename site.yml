@@ -1,0 +1,7 @@
+---
+
+# file: hc_local_pbis.yml
+ - hosts: all
+   become: yes
+   roles:
+       - lpar2rrd

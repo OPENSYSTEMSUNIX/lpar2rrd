@@ -1,0 +1,17 @@
+---
+  - name: RHEL7 | Install lpar2rrd rpm
+    yum:
+      name: lpar2rrd-agent
+      state: latest
+      disable_gpg_check: yes
+
+  - name: RHEL7 | add lpar user
+    user:
+      name: lpar2rrd
+      comment: "LPAR2RRD agent user"
+
+  - name: RHEL7 | setup cronjob
+    cron:
+      name: "send metrics to lpar2rrd"
+      user: root
+      job: "/usr/bin/perl /opt/lpar2rrd-agent/lpar2rrd-agent.pl sa1-nim-p1.harlandclarke.local > /var/tmp/lpar2rrd-agent.out 2>&1"
