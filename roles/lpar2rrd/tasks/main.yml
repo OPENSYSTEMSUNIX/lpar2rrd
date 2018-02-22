@@ -13,5 +13,5 @@
   - name: RHEL7 | setup cronjob
     cron:
       name: "send metrics to lpar2rrd"
-      user: root
+      user: lpar2rrd
       job: "/usr/bin/perl /opt/lpar2rrd-agent/lpar2rrd-agent.pl sa1-nim-p1.harlandclarke.local > /var/tmp/lpar2rrd-agent.out 2>&1"
